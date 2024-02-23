@@ -1,9 +1,12 @@
 package com.test.community;
 
 
+import com.mysql.cj.log.Log;
 import com.test.community.dao.DiscussPostMapper;
+import com.test.community.dao.LoginTicketMapper;
 import com.test.community.dao.UserMapper;
 import com.test.community.entity.DiscussPost;
+import com.test.community.entity.LoginTicket;
 import com.test.community.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -80,6 +83,30 @@ public class MapperTests {
 
         int rows = discussPostMapper.selectDiscussPostRows(0);
         System.out.println(rows);
+    }
+
+    @Autowired
+    private LoginTicketMapper ticketMapper;
+    @Test
+    public void testInsertLoginTicket() {
+        LoginTicket loginTicket = new LoginTicket();
+        loginTicket.setUserId(101);
+        loginTicket.setTicket("abc");
+        loginTicket.setStatus(0);
+        loginTicket.setExpired(new Date(System.currentTimeMillis() + 1000 * 60 * 10));
+
+        ticketMapper.insertLoginTicket(loginTicket);
+    }
+
+    @Test
+    public void testSelectLoginTicket() {
+        LoginTicket loginTicket = ticketMapper.selectByTicket("abc");
+        System.out.println(loginTicket);
+        ticketMapper.updateStatus("abc", 1);
+        loginTicket = ticketMapper.selectByTicket("abc");
+        System.out.println(loginTicket);
+
+
     }
 
 }
