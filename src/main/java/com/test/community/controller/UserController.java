@@ -73,10 +73,11 @@ public class UserController {
         // 生成随机文件名
         fileName = CommunityUtil.generateUUID() + suffix;
         // 确定文件存放的路径
-        File dest = new File(uploadPath + "/" + fileName);
+//        File dest = new File(uploadPath + "/" + fileName);
+        File dest = new File();
         try {
             // 存储文件
-            headerImage.transferTo(dest);
+//            headerImage.transferTo(dest);
         } catch (Exception e) {
             logger.error("上传文件失败： " + e.getMessage());
             throw new RuntimeException("上传文件失败，服务器发生异常！", e);
