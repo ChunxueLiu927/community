@@ -15,6 +15,10 @@ public interface DiscussPostMapper {
     // 如果SQL动态拼接参数，且只有一个参数需要加@Param注解
     int selectDiscussPostRows(@Param("userId") int userId);
 
+    int insertDiscussPost(DiscussPost discussPost);
+
+    DiscussPost selectDiscussPostById(int id);
+
 
 
 
