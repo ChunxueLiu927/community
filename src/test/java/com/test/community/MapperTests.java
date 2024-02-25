@@ -4,9 +4,11 @@ package com.test.community;
 import com.mysql.cj.log.Log;
 import com.test.community.dao.DiscussPostMapper;
 import com.test.community.dao.LoginTicketMapper;
+import com.test.community.dao.MessageMapper;
 import com.test.community.dao.UserMapper;
 import com.test.community.entity.DiscussPost;
 import com.test.community.entity.LoginTicket;
+import com.test.community.entity.Message;
 import com.test.community.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -108,5 +110,31 @@ public class MapperTests {
 
 
     }
+
+    @Autowired
+    private MessageMapper messageMapper;
+    @Test
+    public void testSelectLetters() {
+        List<Message> list = messageMapper.selectConversations(111,0,20);
+        for (Message message:
+             list) {
+            System.out.println(message);
+        }
+
+        int count = messageMapper.selectConversationCount(111);
+        System.out.println(count);
+        List<Message> list1 =  messageMapper.selectLetters("111_112", 0,10);
+        for (Message message:
+                list1) {
+            System.out.println(message);
+        }
+
+        int count1 = messageMapper.selectLetterCount("111_112");
+        System.out.println(count1);
+
+    }
+
+
+
 
 }
