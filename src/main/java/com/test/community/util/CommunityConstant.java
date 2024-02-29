@@ -1,5 +1,7 @@
 package com.test.community.util;
 
+import org.apache.kafka.common.protocol.types.Field;
+
 public interface CommunityConstant {
 
     // 激活成功
@@ -18,5 +20,13 @@ public interface CommunityConstant {
     int ENTITY_TYPE_COMMENT = 2;
     // 实体类型：用户
     int ENTITY_TYPE_USER = 3;
+    // 主题：评论
+    String TOPIC_COMMENT = "comment";
+    // 主题：点赞
+    String TOPIC_LIKE = "like";
+    // 主题：关注
+    String TOPIC_FOLLOW = "follow";
+    // 系统内用户ID
+    int SYSTEM_USER_ID = 1;
 
 }
